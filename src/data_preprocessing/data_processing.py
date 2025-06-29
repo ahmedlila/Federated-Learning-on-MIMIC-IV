@@ -36,4 +36,18 @@ def load_vitalsign_data(columns=None):
     df = clean_temperature_data(df)
     df = fill_missing_values(df, ['temperature', 'heartrate', 'resprate', 
                                 'o2sat', 'sbp', 'dbp', 'pain'])
-    return preprocess_data(df, columns)
+    return preprocess_data(df, columns)\
+
+
+def merge_tables(triage_df, edstays_df, vitalsign_df):
+    """Merge triage, edstays, and vitalsign dataframes."""
+    KEYS = ["subject_id", "stay_id"]
+    triage_df    = triage_df.rename(columns=lambda c: c if c in KEYS else f"{c}_triage")
+    edstays_df   = edstays_df.rename(columns=lambda c: c if c in KEYS else f"{c}_edstays")
+    vitalsign_df = vitalsign_df.rename(columns=lambda c: c if c in KEYS else f"{c}_vitalsign")
+    joined_df = (
+        triage_df
+        .merge(edstays_df,   on=KEYS, how="inner")
+        .merge(vitalsign_df, on=KEYS, how="inner")
+    )
+    return joined_df
