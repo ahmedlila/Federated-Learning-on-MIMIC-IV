@@ -1,2 +1,7 @@
 *.pyc
 *.png
+.venv
+src/federated/.venv
+src/federated/logs
+src/federated/results
+*/__pycache__

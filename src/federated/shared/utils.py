@@ -10,7 +10,7 @@ def get_model_weights(model):
 def set_model_weights(model, weights):
     model.load_state_dict(weights)
 
-def load_data_for_client(client_id, data_dir="data/processed/data_preprocessing", test_size=0.2, random_state=42):
+def load_data_for_client(client_id, data_dir="../../data/processed/data_preprocessing", test_size=0.2, random_state=42):
     """
     Load and split data for a specific client in federated learning
     """

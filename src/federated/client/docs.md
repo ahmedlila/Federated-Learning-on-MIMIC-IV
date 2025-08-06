@@ -22,7 +22,7 @@ The primary client implementation that handles federated learning operations.
 #### Class Signature
 ```python
 class ClientNode:
-    def __init__(self, client_id, server_url='http://localhost:5000', device='cpu')
+    def __init__(self, client_id, server_url='http://localhost:8080', device='cpu')
 ```
 
 #### Key Attributes
@@ -345,7 +345,7 @@ Original Dataset (100%)
 # Basic configuration
 client = ClientNode(
     client_id="client_1",
-    server_url="http://localhost:5000",
+    server_url="http://localhost:8080",
     device="cpu"
 )
 

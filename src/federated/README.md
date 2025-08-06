@@ -79,7 +79,7 @@ python run_federated_learning.py --mode demo --clients 3 --rounds 5
 from client.node import ClientNode
 
 # Create client
-client = ClientNode("client_1", server_url="http://localhost:5000")
+client = ClientNode("client_1", server_url="http://localhost:8080")
 
 # Run federated round
 success = client.run_federated_round(epochs=5, lr=0.001)
@@ -170,7 +170,7 @@ python run_federated_learning.py --mode test
 python demo.py
 
 # Custom configuration
-python demo.py --clients 5 --rounds 10 --server-url http://localhost:5000
+python demo.py --clients 5 --rounds 10 --server-url http://localhost:8080
 
 # Using runner
 python run_federated_learning.py --mode demo --clients 3 --rounds 5
@@ -362,7 +362,7 @@ app.run(host='0.0.0.0', port=5000, debug=False)
 **Server Connection Errors**:
 ```bash
 # Check if server is running
-curl http://localhost:5000/status
+curl http://localhost:8080/status
 
 # Start server manually
 python server/central.py
@@ -395,8 +395,8 @@ python test_system.py
 python -c "from test_system import test_model_creation; test_model_creation()"
 
 # Check server endpoints
-curl http://localhost:5000/status
-curl http://localhost:5000/model_info
+curl http://localhost:8080/status
+curl http://localhost:8080/model_info
 ```
 
 ## 🚀 Deployment
